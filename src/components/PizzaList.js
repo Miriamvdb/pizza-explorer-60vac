@@ -4,6 +4,7 @@ import {
   selectAllPizzas,
   selectAmountOfPizzas,
 } from "../store/pizzas/selectors";
+import AddNewPizza from "./AddNewPizza";
 
 const PizzaList = () => {
   const user = useSelector(selectUser);
@@ -33,6 +34,9 @@ const PizzaList = () => {
           </div>
         );
       })}
+      <div>
+        <AddNewPizza />
+      </div>
     </div>
   );
 };
