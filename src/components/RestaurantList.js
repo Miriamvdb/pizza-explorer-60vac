@@ -1,24 +1,25 @@
 import { useSelector } from "react-redux";
-import { selectAllRestaurants } from "../store/restaurants/selectors";
+import { selectRestoWithPizza } from "../store/selectors";
 
 const RestaurantList = () => {
-  const allRestaurants = useSelector(selectAllRestaurants);
+  const allRestaurants = useSelector(selectRestoWithPizza);
   console.log(allRestaurants);
 
   return (
     <div style={{ borderTop: "1px solid tomato", marginTop: "3rem" }}>
       <h1>Restaurants</h1>
-      {allRestaurants ? (
-        allRestaurants.map((resto, index) => {
-          return (
-            <div key={index}>
-              <h3>{resto.name}</h3>
-            </div>
-          );
-        })
-      ) : (
-        <p>Loading..</p>
-      )}
+      {allRestaurants.map((resto, index) => {
+        return (
+          <div key={index}>
+            <h3>{resto.name}</h3>
+            <ul>
+              {resto.pizzas.map((pizza, index) => {
+                return <div key={index}>{pizza.name}</div>;
+              })}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };
