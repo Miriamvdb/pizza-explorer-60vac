@@ -49,10 +49,7 @@ const PizzaList = () => {
                 style={{ backgroundImage: `url(${pizza.image})` }}
               >
                 <div className="overlay">
-                  <p>
-                    <b>Description: </b>
-                    {pizza.description}
-                  </p>
+                  <p>{pizza.description}</p>
                   <p>
                     <b>Bought: </b>
                     {pizza.bought}
