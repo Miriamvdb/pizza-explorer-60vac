@@ -36,11 +36,7 @@ export const pizzaSlice = createSlice({
   name: "pizzas",
   initialState,
   reducers: {
-    // 1a. add a new case..
     submitNewPizza: (state, action) => {
-      // 6. Write logic to add the new pizza to "allPizzas"
-      // Remember the parameter you pass in to the action is
-      // available as action.payload in the reducer.
       const { name, description } = action.payload;
       const newPizza = {
         id: Math.floor(Math.random() * 1000),
@@ -53,6 +49,5 @@ export const pizzaSlice = createSlice({
   },
 });
 
-// 1b. ..and export
 export const { submitNewPizza } = pizzaSlice.actions;
 export default pizzaSlice.reducer;

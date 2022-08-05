@@ -1,15 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; // 3.
 import { selectUser } from "../store/user/selectors";
 import {
   selectAllPizzas,
   selectAmountOfPizzas,
 } from "../store/pizzas/selectors";
 import AddNewPizza from "./AddNewPizza";
+import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { toggleFav } from "../store/user/slice";
 
 const PizzaList = () => {
   const user = useSelector(selectUser);
   const amountOfPizzas = useSelector(selectAmountOfPizzas);
   const allPizzas = useSelector(selectAllPizzas);
+  const dispatch = useDispatch(); // 3.
 
   return (
     <div>
@@ -22,6 +25,19 @@ const PizzaList = () => {
         return (
           <div key={index}>
             <h3>{pizza.name}</h3>
+            {/* 1. Add a heart next to each pizza (fav or not) */}
+
+            {/* 4. Dispatch it from the heart-button, we'll pass in */}
+            {/* the id of the current pizza as a parameter so we can */}
+            {/* add it as a favorite next! */}
+            <button onClick={() => dispatch(toggleFav(pizza.id))}>
+              {user.favorites.includes(pizza.id) ? (
+                <BsSuitHeartFill />
+              ) : (
+                <BsSuitHeart />
+              )}
+            </button>
+
             <p>
               <b>Description: </b>
               {pizza.description}

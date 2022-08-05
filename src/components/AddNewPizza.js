@@ -1,28 +1,23 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux"; // 2a. import useDispatch
-import { submitNewPizza } from "../store/pizzas/slice"; // 4.
+import { submitNewPizza } from "../store/pizzas/slice";
 
 const AddNewPizza = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const dispatch = useDispatch(); // 2b. import useDispatch
+  const dispatch = useDispatch();
 
   const submitPizza = (event) => {
     event.preventDefault();
     console.log("New pizza: ", name, description);
 
-    // 3. Create an object with name and description and
-    // pass "newPizza" to the action as a parameter (below)
     const newPizza = {
       name,
       description,
     };
 
-    // 4. Dispatch the action with the new action creator
-    // and send the newPizza to the store
     dispatch(submitNewPizza(newPizza));
 
-    // 5. Clear the input-fields
     setName("");
     setDescription("");
   };
