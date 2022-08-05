@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/user/selectors";
 import {
-  //   selectAllPizzas,
+  selectAllPizzas,
   selectAmountOfPizzas,
 } from "../store/pizzas/selectors";
 
 const PizzaList = () => {
   const user = useSelector(selectUser);
   const amountOfPizzas = useSelector(selectAmountOfPizzas);
-  //   const allPizzas = useSelector(selectAllPizzas);
+  const allPizzas = useSelector(selectAllPizzas);
 
   return (
     <div>
@@ -17,7 +17,7 @@ const PizzaList = () => {
         Welcome back, <strong>{user.name}</strong>!
       </p>
       <h2>Pizza's ({amountOfPizzas})</h2>
-      {/* {allPizzas.map((pizza, index) => {
+      {allPizzas.map((pizza, index) => {
         return (
           <div key={index}>
             <h3>{pizza.name}</h3>
@@ -32,7 +32,7 @@ const PizzaList = () => {
             <img src={pizza.image} alt={pizza.name} />
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 };
