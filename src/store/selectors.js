@@ -15,6 +15,18 @@ export const selectRestoWithPizza = (reduxState) => {
     return { ...resto, pizzas: replacePizzas };
   });
 
-  console.log(pizzas);
   return restoWithPizza;
+};
+
+export const selectPizzaSoldByResto = (restaurantId) => (reduxState) => {
+  // get id's of pizzas sold
+  const restaurant = reduxState.restaurants.all.find(
+    (resto) => resto.id === restaurantId
+  );
+
+  const { allPizzas } = reduxState.pizzas;
+  // replace them with the actual objects from the all pizzas array
+  return restaurant.pizzas.map((pizzaId) =>
+    allPizzas.find((pizza) => pizza.id === pizzaId)
+  );
 };
